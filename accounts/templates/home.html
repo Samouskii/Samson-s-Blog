@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Samson's Blog | Home{% endblock title %}
+
+{% block content %}
+    <br />
+    <div class="jumbotron">
+        <h1 class="display-4">Samson's Blog</h1>
+        <p class="lead">A blog based on relationship built with Django.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View Articles</a>
+        </p>
+    </div>
+    {% if user.is_authenticated %}
+        <p>You are logged in as {{ user.username }}</p>
+         <p></p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{% url 'login' %}">Log In</a> |
+        <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+{% endblock content %}
